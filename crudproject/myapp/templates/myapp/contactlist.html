@@ -1,0 +1,58 @@
+{% extends "myapp/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- <form action="" method="POST" > -->
+<!-- {% csrf_token %} -->
+<div class="col-md-8 offset-md-2 border border-primary p-2 mt-5 bg-danger"> 
+    <h4 class="text-center alert alert-danger">Show contact the data</h4>
+    {% if con1 %}
+    <table class="table table-dark table-hover">
+            <thead class="table-danger">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">CIDN</th>
+                <th scope="col">Price</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Email</th>
+                <th scope="col">Account</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for data in con1 %}
+              <tr>
+                <th scope="row">{{data.contact_name}}</th>
+                <td>{{data.contact_cidn}}</td>
+                <td>{{data.contact_price}}</td>
+                <td>{{data.contact_phone}}</td>
+                <td>{{data.contact_email}}</td>
+                <td>{{data.account}}</td>
+                <td>
+                    <form action="{% url 'Cdelete' data.id %}" method="POST" class="d-inline p-0">
+                        {% csrf_token %}
+                          <input type="submit"class="btn btn-danger" value="Delete">
+                      </form>
+                      <a href="{% url 'Cupdate' data.id %}" class="btn btn-info p-1">Update</a>
+                      
+                    </td>
+            </tr>
+              {% endfor %}
+            </tbody>
+
+      </table>
+
+    {% else %}
+<h4 class="text-center alert alert-danger">no record</h4>
+
+    {% endif %}
+    
+</div>
+
+
+
+<!-- </form> -->
+
+{% endblock content %}
+
+{% block navbar %}
+{% endblock navbar %}

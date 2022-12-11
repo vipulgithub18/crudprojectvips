@@ -1,0 +1,36 @@
+{% extends "myapp/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- <form action="" method="POST" > -->
+
+<form action="" method="POST" class=" mt-4 " >
+    {% csrf_token %}
+    <div class="container my-2 bg-danger col-md-3 text-light p-1 pb-0.2 "  >
+        <div class="col-md-12  p-2 mb-2 text-light bg-dark text-white">
+        <header class="text-center ">
+            <h1 class="display-6  bg-success p-2">Contact Update Form</h1>
+        </header>
+        <div class="col-md-8 offset-md-2">          
+            
+    {{cu.contact_name|as_crispy_field}}
+    {{cu.contact_cidn|as_crispy_field}}
+    {{cu.contact_price|as_crispy_field}}
+    {{cu.contact_phone|as_crispy_field}}
+    {{cu.contact_email|as_crispy_field}}
+    {{cu.account|as_crispy_field}}
+        <input type="submit"class="btn btn-secondary " value="Update">
+        <a href="{% url 'Clist' %}" class="btn btn-info ">Show data</a>
+        <!-- <a href="{% url 'list' %}" class="btn btn-dark "> data</a> -->
+    
+    </div>
+    </div>
+    
+    </form>
+    
+
+<!-- </form> -->
+
+{% endblock content %}
+
+{% block navbar %}
+{% endblock navbar %}
