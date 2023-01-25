@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect,HttpResponseRedirect
 from django.http import HttpResponse
 from .forms import Account_Register,Contact_Register
 from .models import Accounts,Contact
+from django.contrib import messages
+
 # Create your views here.
 
 # home page 
@@ -27,6 +29,7 @@ def add_show(request):
             result=Accounts(client_name=cnm,account_status=accs,industry=ind,account_owner=acco)
             result.save()
             ad=Account_Register()
+            messages.success(request, 'Record Successfully inserted ')
             # return redirect('/list/')
     else:
         ad=Account_Register()
